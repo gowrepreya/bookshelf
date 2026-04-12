@@ -10,6 +10,10 @@ const app = express();
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Bookstore API is running 🚀");
+});
+
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/books', require('./routes/books'));

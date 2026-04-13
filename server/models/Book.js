@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bookSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true },
   author: { type: String, required: true, trim: true },
-  isbn: { type: String, unique: true, sparse: true },
+  isbn: { type: String, default: undefined },
   description: { type: String, default: '' },
   coverImage: { type: String, default: '' },
   genre: { type: String, required: true },

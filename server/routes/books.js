@@ -47,9 +47,11 @@ router.get('/:id', optionalAuth, async (req, res) => {
 // Add book
 router.post('/', auth, async (req, res) => {
   try {
-    const book = new Book({ ...req.body, addedBy: req.user._id });
-    await book.save();
-    res.status(201).json({ book });
+    const bookData = { ...req.body, addedBy: req.user._id };       // ← NEW
+    if (!bookData.isbn || bookData.isbn.trim() === '') {
+      delete bookData.isbn;
+    }
+    const book = new Book(bookData); 
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

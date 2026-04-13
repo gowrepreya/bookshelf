@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://bookshelf-frontend.onrender.com'
+    'https://bookshelf-frontend-yprl.onrender.com'
   ],
   credentials: true
 }));

@@ -8,14 +8,21 @@ dotenv.config();
 const app = express();
 
 
-app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://bookshelf-frontend-yprl.onrender.com'
-  ],
+// app.use(cors({
+//   origin: [
+//     'http://localhost:3000',
+//     'https://bookshelf-frontend-yprl.onrender.com'
+//   ],
+//   credentials: true
+// }));
+const corsOptions = {
+  origin: function (origin, callback) {
+    callback(null, true);
+  },
   credentials: true
-}));
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (req, res) => {
